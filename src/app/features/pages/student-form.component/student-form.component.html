@@ -1,0 +1,27 @@
+<form #IDForm="ngForm" class="form" (ngSubmit)="onSubmit(IDForm)">
+  <mat-form-field class="full-width">
+    <input required="true" type="text" matInput 
+    placeholder="Enter your Name" 
+    value=""
+    ngModel 
+    name="StudentName"
+    #StudentName="ngModel">
+     <mat-error *ngIf="StudentName.invalid && StudentName.touched">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input required="true" type="number" matInput placeholder="Enter your ID" 
+    value="0"
+    ngModel name="StudentID"
+    #StudentID="ngModel"
+    min="1">
+
+     <mat-error *ngIf="StudentID.errors?.['min'] || StudentID.touched">
+      ID is required and must be greater than 0
+    </mat-error>
+  </mat-form-field>
+
+  <button [disabled]="!IDForm.valid" type="submit" mat-raised-button color="primary">Get Schedule</button>
+</form>

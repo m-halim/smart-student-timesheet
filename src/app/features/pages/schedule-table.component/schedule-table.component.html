@@ -1,0 +1,17 @@
+<div class="container" *ngIf="schedule$ | async as studentclass">
+  <ng-container>
+    <h2 class="title">📅 Student Schedule</h2>
+    
+    <mat-table [dataSource]="studentclass" class="mat-elevation-z8">
+
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <mat-header-cell *matHeaderCellDef> {{ column }} </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item[column] }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{ 'highlight': row.day === dayName }"></mat-row>
+
+    </mat-table>
+  </ng-container>
+</div>
