@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StudentSchedule } from '../../../core/interfaces/studentSchedule.interface';
 
@@ -6,7 +6,8 @@ import { StudentSchedule } from '../../../core/interfaces/studentSchedule.interf
   selector: 'app-schedule-table',
   templateUrl: './schedule-table.component.html',
   styleUrl: './schedule-table.component.css',
-  standalone:false
+  standalone:false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScheduleTableComponent implements OnInit{
 
